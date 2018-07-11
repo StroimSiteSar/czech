@@ -1,0 +1,856 @@
+@import 'colors';
+@import 'fonts';
+
+/* ======================== Заготовки и переменные ========================= */
+//@include active-link;
+@mixin active-link {
+    color: $main-blue;
+    border-bottom: 1px solid $main-blue;
+    &:hover {
+        text-decoration: none;
+        color: $active-red;
+        border-color: $active-red;
+    }
+}
+
+/* ============================== global css =============================== */
+
+* {
+    transition: .3s;
+}
+
+body {
+	@include fontSize18;
+	font-family: $RobR;
+	color: $text-article;
+	position: relative;
+    min-height: 100%;
+    cursor: default;
+}
+
+header {
+	display: block;
+    .header-top {
+        position: relative;
+        background-color: $white;
+        padding-top: 0;
+        &__blue-bg {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 54px;
+            background-color: $main-blue;
+        }
+        .logo {
+            align-self: flex-start;
+            position: relative;
+            z-index: 9999;
+            width: 33%;
+            display: flex;
+            justify-content: center;
+            max-width: 270px;
+            padding-top: 0;
+            #logo_bg {
+                position: absolute;
+                z-index: 50;
+            }
+            #logo_art {
+                margin-top: 8%;
+                position: absolute;
+                z-index: 99;
+            }
+            &-link {
+                position: absolute;
+                z-index: 100;
+                display: block;
+                width: 100%;
+                height: 28vw;
+                border-bottom-left-radius: 50%;
+                border-bottom-right-radius: 50%;
+            }
+            &:after {
+                display: block;
+                content: "";
+                clear: both;
+            }
+        }
+        &__menu-btn {
+            outline: none;
+            margin-top: 7px;
+            position: relative;
+            z-index: 10;
+            border: 1px solid $white;
+            color: $white;
+            font-size: 28px;
+        }
+        &__contact {
+            height: 100%;
+            padding-right: 0;
+            display: inline-flex;
+            text-decoration: none;
+            align-content: center;
+            margin-top: 10px;
+            align-items: center;
+            justify-content: flex-end;
+            &-search {
+                align-self: flex-end;
+                width: 100%;
+                height: 40px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: #e4e4e4;
+                border-radius: 5px;
+            }
+        }
+        &__icon {
+            color: $active-red;
+            font-size: 28px;
+            line-height: 30px;
+        }
+        &__tel-numb {
+            color: #010101;
+            font-size: 17px;
+            font-family: $RobB;
+        }
+        &__adress-numb {
+            padding-left: 5px;
+            @include fontSize14;
+            line-height: 22px;
+            text-decoration: underline;
+            color: $main-blue;
+        }
+        .contact-search__btn {
+            border: none;
+            outline: none;
+            background-color: transparent;
+            height: auto;
+            width: auto;
+        }
+        .contact-search__string {
+            border: none;
+            outline: none;
+            background-color: transparent;
+            height: auto;
+            width: auto;
+        }
+        .nav {
+            padding: .5rem 0;
+            position: relative;
+            z-index: 10;
+            li {
+                @include fontSize18;
+                line-height: 24px;
+                a {
+                    color: #000;
+                }
+            }
+        }
+    }
+}
+
+footer {
+    display: block;
+}
+
+.connection {
+    overflow: hidden;
+    position: relative;
+    .c-sm-none {}
+    .feedback {
+        position: relative;
+        z-index: 1;
+        background-color: $main-blue;
+        color: $white;
+        height: 520px;
+        &__contacts {
+            padding: 30px 0 15px;
+            text-align: center;
+            @include fontSize16;
+            line-height: 36px;
+            font-family: $RobR;
+            &-tel {
+                @include fontSize22;
+            }
+            &-social {
+                @include fontSize24;
+                a{
+                    color: $white;
+                }
+            }
+        }
+        &__form {
+            background-color: $lightblue;
+            display: flex;
+            flex-direction: column;
+            padding: 20px 0 30px;
+            &-caption {
+                text-align: center;
+                @include fontSize24;
+                margin-bottom: 25px;
+            }
+            &-name, &-tel {
+                width: 290px;
+                align-self: center;
+                height: 40px;
+                border: none;
+                border-radius: 5px;
+                padding: 10px;
+                margin-bottom: 20px;
+                &::-webkit-input-placeholder {
+                    text-align: center;
+                }
+                &:-moz-placeholder {
+                    text-align: center;
+                }
+            }
+            &-btn-shadow {
+                position: relative;
+                width: 290px;
+                height: 40px;
+                border-radius: 5px;
+                background-color: #731216;
+                align-self: center;
+            }
+            &-btn-send {
+                position: absolute;
+                top: -4px;
+                height: 40px;
+                font-size: 20px;
+                line-height: 40px;
+                width: 100%;
+                background-color: $active-red;
+                text-align: center;
+                border-radius: 5px;
+                cursor: pointer;
+                &:active {
+                    top: 0;
+                }
+            }
+        }
+        &__privacy {
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            @include fontSize11;
+            a {
+                color: $white;
+                text-decoration-line: underline;
+            }
+        }
+    }
+    &-map {
+        display: none;
+        position: absolute;
+        width: 100%;
+        top: 0;
+        left: 0;
+    }
+}
+
+.footer-down {
+    padding: 30px 0;
+    line-height: 24px;
+    @include fontSize14;
+    .sd_logo {
+        width: 40px;
+        float: left;
+        margin-right: 15px;
+    }
+    a {
+        @include active-link;
+    }
+    
+}
+
+main {
+	display: block;
+}
+
+.page-top {
+    @include fontSize14;
+    line-height: 22px;
+    padding: 15vw 0 10px;
+    .h1 {
+        font-family: 'Roboto Slab', $RobSB;
+        font-size: 22px;
+        line-height: 48px;
+    }
+    a {
+        text-decoration: underline;
+        color: $main-blue;
+    }
+}
+
+.h2 {
+    @include fontSize30;
+    line-height: 24px;
+    margin-bottom: 20px;
+}
+.h3 {
+    font-family: $RobB;
+    @include fontSize18;
+}
+
+
+/* =============================== home page =============================== */
+
+.slider {
+    overflow: hidden;
+    position: relative;
+    justify-content: center;
+    #carouselExampleControls{
+        position: relative;
+        &:after {
+            display: block;
+            content: "";
+            clear: both;
+        }
+        .carousel-control-prev {
+            z-index: 999;
+        }
+        .carousel-control-next {
+            z-index: 999;
+        }
+        .controller {
+            @include fontSize120;
+        }
+    }
+    .slider-up {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        .container, .row {
+            height: 100%;
+        }
+        .h1 {
+            font-family: $RobSB;
+            font-size: 27px;
+            line-height: 48px;
+        }
+        &__banner {
+            position: relative;
+            display: flex;
+            color: $white;
+            padding: 20px 20px;
+            height: 100%;
+            flex-direction: column;
+            z-index: 120;
+            &-header {
+                font-family: $RobSB;
+                @include fontSize36;
+                line-height: 24px;
+            }
+            &-article {
+                margin: 10px 0;
+                width: 96%;
+                @include fontSize18;
+            }
+            &-btn-shadow {
+                width: 160px;
+                height: 40px;
+                border-radius: 5px;
+                background-color: #731216;
+            }
+            &-btn-more {
+                position: relative;
+                bottom: 4px;
+                width: 160px;
+                height: 40px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: $active-red;
+                border-radius: 5px;
+                z-index: 9999;
+                cursor: pointer;
+                @include fontSize24;
+                &:active {
+                    bottom: 0;
+                }
+            }
+        }
+    }
+
+    &:after {
+        display: block;
+        content: "";
+        clear: both;
+    }
+    .shadowblock {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 1000%;
+        height: 100%;
+        background-color: #083644;
+        opacity: 0.44;
+    }
+}
+
+.programm {
+    &_draw {
+        position: relative;
+        top: -10px;
+    }
+    &-hex {
+        position: relative;
+        height: 100%;
+        max-height: 180px;
+        display: flex;
+        justify-content: center;
+        max-width: 270px;
+        cursor: default;
+        &:after {
+            display: block;
+            content: "";
+            clear: both;
+        }
+        &:hover {
+            .programm__inner-red {
+                display: none;
+            }
+            .programm__inner-blue {
+                display: block;
+            }
+        }
+        &__text {
+            font-family: $RobSB;
+            text-align: center;
+            z-index: 200;
+            position: absolute;
+            color: $white;
+            font-size: 6vw;
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            align-self: center;
+            align-content: center;
+            &-middle {
+                font-size: 4.5vw;
+                line-height: 4.5vw;
+            }
+        }
+    }
+    &_border {
+        z-index: 50;
+    }
+    &__inner {
+        height: 100%;
+        position: absolute;
+        z-index: 99;
+        display: flex;
+        align-content: center;
+        justify-content: center; 
+        &-red {
+            display: block;
+        }
+        &-blue {
+            display: none;
+        }
+        &:after {
+            display: block;
+            content: "";
+            clear: both;
+            }
+    }
+    &-more {
+        display: flex;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+        font-family: $RobSR;
+        font-size: 20px;
+        line-height: 48px;
+        text-align: center;
+        a {
+            text-decoration: none;
+            color: $main-blue;
+            &:hover {
+                color: $active-red;
+            }
+        }
+        span {
+            border-bottom: 3px dashed $main-blue;
+        }
+    
+    }
+}
+
+.school {
+    text-align: center;
+    background-color: $main-blue;
+    color: $white;
+    position: relative;
+    overflow: hidden;
+    &-header {
+        margin: 52px 0 40px;
+        font-family: $RobSB;
+        font-size: 32px;
+        line-height: 24px;
+    }
+    &-btn-shadow {
+        margin: 40px auto 52px;
+        width: 160px;
+        height: 40px;
+        border-radius: 5px;
+        background-color: #731216;
+        cursor: pointer;
+    }
+    &-btn-more {
+        position: relative;
+        bottom: 4px;
+        width: 160px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $active-red;
+        border-radius: 5px;
+        z-index: 9999;
+        color: $white;
+        &:hover {
+            color: $white;
+            text-decoration: none;
+        }
+        &:active {
+            bottom: 0;
+        }
+    }
+}
+
+.information {
+    &-header {
+        text-align: center;
+        font-family: $RobSB;
+        font-size: 26px;
+        line-height: 24px;
+        margin: 60px auto 50px;
+        img {
+            display: none;
+        }
+    }
+    ul {
+        columns: 1;
+        margin-bottom: 60px;
+    }
+    li {
+        list-style-type: none;
+        line-height: 45px;
+        text-decoration: underline;
+        a {
+            color: $main-blue;
+            &:hover {
+                color: $active-red;
+            }
+        }
+    }
+}
+
+
+/* =============================== info page =============================== */
+
+.info {
+    &-news__article {
+        margin: 20px 0;
+        &-head {
+            @include fontSize30;
+            color: $main-blue;
+            line-height: normal;
+            border-bottom: 2px solid $main-blue;
+            &:hover {
+                text-decoration: none;
+                color: $active-red;
+                border-color: $active-red;
+            }
+        }
+        &-date {
+            margin-top: 1vw;
+            color: $defgrey;
+        }
+        &-text {
+            text-align: justify;
+        } 
+    } 
+}
+
+/* ============================== about page =============================== */
+
+.about {
+    padding-bottom: 70px;
+}
+.why{
+    padding-bottom: 70px;
+    &__text {
+        margin-bottom: 1.5vw;
+    }
+    &__list {
+        color: $main-blue;
+        span {
+            color: $black;
+        }
+    }
+}
+.photogallery {
+    padding-bottom: 70px;
+    &__album {
+        margin-bottom: 10px;
+        &-caption {
+            @include active-link;
+        }
+    }
+}
+.tablebox {
+    padding-bottom: 70px;
+    &__row {
+        display: flex;
+        align-items: center;
+        height: 60px;
+        flex-wrap: nowrap;
+        line-height: 30px;
+        &:nth-child(2n+1) {
+            background-color: #e4e4e4;
+        }
+        &:first-child {
+            background-color: $main-blue;
+            font-family: $RobSR;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            height: 77px;
+        }
+        &-col {
+            align-items: center; 
+            overflow: hidden;
+            text-align: center;
+        }
+    }
+}
+
+/* =============================== 404 page ================================ */
+
+.page404 {
+    margin-bottom: 70px;
+    &-content {
+        text-align: center;
+        margin: 0 auto;
+        display: flex;
+        width: 100%;
+        max-width: 500px;
+        flex-direction: column;
+        &__img {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            &-text {
+                font-family: $Neucha;
+                @include fontSize28;
+                position: absolute;
+                left: 36%;
+                top: 15%;
+            }
+            &-top {
+                width: 60%;
+                max-width: 290px;
+                align-self: center;
+                position: relative;
+                z-index: 10;
+            }
+            &-bot {
+                width: 100%;
+                max-width: 500px;
+                position: relative;
+                top: -20px;
+            }
+        }
+        &__text {
+            position: relative;
+            top: -10px;
+            width: 85%;
+            align-self: center;
+        }
+        &__btn {
+            &-shadow {
+                position: relative;
+                width: 290px;
+                height: 47px;
+                border-radius: 5px;
+                background-color: #731216;
+                align-self: center;
+            }
+            &-main {
+                color: $white;
+                position: absolute;
+                top: -4px;
+                height: 47px;
+                font-size: 20px;
+                line-height: 47px;
+                width: 100%;
+                background-color: $active-red;
+                text-align: center;
+                border-radius: 5px;
+                cursor: pointer;
+                &:active {
+                    top: 0;
+                }
+            }
+        }    
+    }   
+}
+
+/* =============================== FAQ page ================================ */
+
+.faq {
+    padding-bottom: 70px;
+    &-qq {
+        &__item {
+            margin-bottom: 20px;
+            &-question {
+                display: flex;
+                padding: 20px;
+                font-family: $RobSR;
+                color: $white;
+                background-color: $main-blue;
+                line-height: 22px;
+                justify-content: space-between;
+                .simbol {
+                    cursor: pointer;
+                    font-size: 48px;
+                    &-plus {
+                        display: block;
+                    }
+                    &-minus {
+                        display: none;
+                    }
+                }
+            }
+            &-answer {
+                transition: 0s;
+                padding: 0px 20px;
+                height: 0px;
+                overflow: hidden;
+            }
+        }
+        .open {
+            .faq-qq__item-question {
+                background-color: $active-red;
+                .simbol {
+                    &-plus {
+                        display: none;
+                    }
+                    &-minus {
+                        display: block;
+                        transform: scaleX(2.0);
+                    }
+                }
+            }
+            .faq-qq__item-answer {
+                padding: 20px 20px 0;
+                height: auto;
+            }
+        }
+    }
+}
+
+/* =============================== контакты ================================ */
+
+.contacts {
+    margin-bottom: 35px;
+    &__form {
+        background-color: $main-blue;
+        display: flex;
+        flex-direction: column;
+        color: $white;
+        &-caption {
+            text-align: center;
+            font-size: 14px;
+            margin: 20px 0;
+            font-family: 'Roboto Slab', $RobSB;
+        }
+        &-name, &-tel {
+            width: 266px;
+            align-self: center;
+            height: 43px;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 20px;
+            &::-webkit-input-placeholder {
+                text-align: center;
+            }
+            &:-moz-placeholder {
+                text-align: center;
+            }
+        }
+        &-btn-shadow {
+            position: relative;
+            width: 266px;
+            height: 43px;
+            border-radius: 5px;
+            background-color: #731216;
+            align-self: center;
+        }
+        &-btn-send {
+            position: absolute;
+            top: -4px;
+            height: 43px;
+            font-size: 20px;
+            line-height: 43px;
+            width: 100%;
+            background-color: $active-red;
+            text-align: center;
+            border-radius: 5px;
+            cursor: pointer;
+            &:active {
+                top: 0;
+            }
+        }
+        &-privacy {
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            @include fontSize11;
+            margin: 25px 0;
+            a {
+                color: $white;
+                text-decoration-line: underline;
+            }
+        }
+    }
+    &-list {
+        &__par {
+            display: flex;
+            align-items: center;
+            padding: 7px 0;
+            &-icon {
+                display: inline-flex;
+                width: 24px;
+                justify-content: center;
+                margin-right: 15px;
+            }
+            &-text {
+                display: inline-flex;
+                font-family: $RobSR;
+            }
+            &:nth-child(2) {
+                .contacts-list__par-text {
+                    font-family: 'Roboto Slab', $RobSB;
+                }
+            }
+            &:nth-child(4) {
+                margin: 20px 0;
+            }
+            &:last-child {
+                @include fontSize24;
+            }
+        }
+    }
+}
+
+/* ============================= Медиа-запросы ============================= */
+
+@import 'media';
